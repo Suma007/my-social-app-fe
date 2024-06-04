@@ -1,0 +1,144 @@
+/* Home.css */
+
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9;
+}
+
+.home-container {
+  width: 100%;
+  height: 100vh; /* Set the height to 100% of the viewport height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  width: 100%;
+  padding: 20px;
+  background: linear-gradient(to right,  #ffeb3b, #71a575);
+  color: black;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header h2 {
+  margin: 0;
+}
+
+.main-content {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  padding-top: 10px;
+}
+
+.details, .friends, .suggestions {
+  background: linear-gradient(to bottom, #d6d74c, #71a575);;/* Grey gradient */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  overflow-y: auto; /* Add scroll if content overflows */
+  max-height: calc(100vh - 140px); /* Adjust max height to fit header and padding */
+}
+
+.details h3, .friends h3, .suggestions h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tag-box {
+  padding: 5px 10px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  border-radius: 4px;
+}
+
+/* Define tag colors */
+.tag-color-1 {
+  background-color: #ff9800; /* Orange */
+
+}
+
+.tag-color-2 {
+  background-color: #ffeb3b; /* Yellow */
+}
+
+
+.friend-box, .suggestion-box {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.friend-box p, .suggestion-box p {
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.friend-box .tags, .suggestion-box .tags {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Styles for the search box */
+.search-box {
+  position: relative;
+}
+
+/* Styles for the dropdown list */
+.dropdown {
+  position: absolute;
+  top: calc(100% + 5px); /* Position below the search box */
+  left: 0;
+  z-index: 1; /* Ensure dropdown is above other elements */
+  width: 100%;
+  max-height: 200px; /* Limit height to create a scrollable dropdown */
+  overflow-y: auto; /* Enable vertical scrolling if list exceeds max height */
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-top: none; /* Remove border on top */
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles for individual dropdown items */
+.dropdown-item {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+/* Hover effect for dropdown items */
+.dropdown-item:hover {
+  background-color: #f0f0f0;
+}
+
+.search-result-row {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tag-box {
+  padding: 5px 10px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  border-radius: 4px;
+}
+
+.logout-btn{
+  margin-bottom: 10px;;
+}

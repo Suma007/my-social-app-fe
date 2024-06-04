@@ -1,0 +1,13 @@
+/* SearchResultRow.css */
+
+.search-result-row {
+    padding: 8px 12px;
+    cursor: pointer;
+    color:black;
+    font-weight: bold;
+  }
+  
+  .search-result-row:hover {
+    background: linear-gradient(to right,  #dcdd9d, #71a575);
+}
+  
