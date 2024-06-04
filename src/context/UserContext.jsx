@@ -10,6 +10,7 @@ export const UserProvider = ({ children }) => {
 
 
   const fetchUserData = async (userId) => {
+    if (userId === undefined) return;
     try {
       const response = await fetch(`http://localhost:3000/members/${userId}`);
       if (!response.ok) {

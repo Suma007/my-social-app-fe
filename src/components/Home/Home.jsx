@@ -7,14 +7,14 @@ import renderHeadings from '../utility/headingUtils';
 import Suggestions from './Suggestions';
 
 const Home = () => {
-  const { user, setUser, setSuggestions } = useContext(UserContext);
+  const { user, setUser, setSuggestions, fetchUserData } = useContext(UserContext);
   const [searchTerm, setSearchTerm] = useState('');
   const [showDropdown, setShowDropdown] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [members, setMembers] = useState([]);
   const navigate = useNavigate();
-  const apiUrl = user ? `http://localhost:3000/members/${user.id}/find_people_you_may_know` : null;
+  const apiUrl = user.id ? `http://localhost:3000/members/${user.id}/find_people_you_may_know` : null;
 
   useEffect(() => {
     const fetchSuggestions = async () => {
@@ -33,7 +33,7 @@ const Home = () => {
         setLoading(false);
       }
     };
-
+  
     if (user) {
       fetchSuggestions();
     }
@@ -57,6 +57,7 @@ const Home = () => {
     };
 
     fetchMembers();
+    fetchUserData(user.id);
   }, []);
 
   const handleSearch = (e) => {
@@ -76,7 +77,7 @@ const Home = () => {
   };
 
   const filteredResults = members.filter((member) => {
-    if (!searchTerm) return true; // If no search term, show all members
+    if (!searchTerm) return true;
     return member.headings.some((heading) => heading.content_value.toLowerCase().includes(searchTerm.toLowerCase()));
   });
 
@@ -114,9 +115,7 @@ const Home = () => {
                   <div key={index} onClick={() => handleMemberProfileClick(member.id)}>
                     <p>{member.name}</p>
                     <div>
-                      {member.headings.map((heading, idx) => (
-                        <span key={idx}>{heading.content_value}</span>
-                      ))}
+                      {renderHeadings(member.headings)}
                     </div>
                   </div>
                 ))}

@@ -24,13 +24,15 @@ const SignUp = () => {
       },
       body: JSON.stringify(newUser)
     })
-      .then(response => {
-        if (response.ok) {
-          localStorage.setItem('user', JSON.stringify(newUser));
-          setUser(newUser);
+      .then((response) => response.json())
+      .then(data => {
+        if (data) {
+          console.log(data);
+          localStorage.setItem('user', JSON.stringify(data));
+          setUser(data);
           navigate('/signin');
         } else {
-          console.error('Failed to sign up:', response.status);
+          console.error('Failed to sign up:');
         }
       })
       .catch(error => {
@@ -50,7 +52,7 @@ const SignUp = () => {
           required
         />
         <input
-          type="text"
+          type="url"
           placeholder="Profile Website URL"
           value={websiteUrl}
           onChange={(e) => setWebsiteUrl(e.target.value)}

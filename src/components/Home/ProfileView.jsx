@@ -44,11 +44,11 @@ const ProfileView = () => {
       },
       body: JSON.stringify({ friend_id: id }),
     })
-      .then((response) => response.json())
-      .then((data) => {
-        setFriends(data);
-        fetchUserData(user.id);
-        fetchProfile();
+      .then((response) => {
+        if(response.ok){
+          fetchUserData(user.id);
+          fetchProfile();
+        }
       })
       .catch((error) => setError(error.message));
   };
