@@ -60,6 +60,14 @@ const Home = () => {
     fetchUserData(user.id);
   }, []);
 
+  useEffect(() =>{
+    if(user && !user.headings){
+      const pollingInterval = 1000;
+      const pollHeadings = setInterval(() => fetchUserData(user.id), pollingInterval);
+      return () => clearInterval(pollHeadings);
+    }
+  }, [fetchUserData]);
+
   const handleSearch = (e) => {
     const term = e.target.value;
     setSearchTerm(term);
